@@ -1,0 +1,2 @@
+class HoneyPieController < ApplicationController
+end
