@@ -1,5 +1,13 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before(:each) do
+    @user = User.new
+    @user.stars = 0
+  end
+
+  it 'should have an amount of stars' do
+    @user.stars.should == 0
+  end
+  
 end
