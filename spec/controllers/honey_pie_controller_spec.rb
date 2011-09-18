@@ -14,5 +14,16 @@ describe HoneyPieController do
   it 'can display the amount of stars' do
     sign_up
     page.should have_content('You have 0 stars.')
+
+    update_user_stars 1
+    visit '/'
+    page.should have_content('You have 1 star.')
   end
+
+  def update_user_stars stars
+    user = User.find_by_email('jacobodonnell@gmail.com')
+    user.stars = stars
+    user.save
+  end
+
 end
