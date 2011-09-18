@@ -86,6 +86,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    mocha (0.9.12)
     multi_json (1.0.3)
     nokogiri (1.5.0)
     orm_adapter (0.0.5)
@@ -189,6 +190,7 @@ DEPENDENCIES
   devise
   heroku
   jquery-rails
+  mocha
   pg
   rails (= 3.1.0)
   rspec-rails
