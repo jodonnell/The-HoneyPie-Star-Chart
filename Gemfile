@@ -24,6 +24,8 @@ end
 
 gem 'jquery-rails'
 
+gem 'rufus-scheduler'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

@@ -15,9 +15,9 @@ describe User do
     @user.convert_activities_to_stars
 
     @user.stars.should == 4
-    @user.yoga = 0
-    @user.meditation = 0
-    @user.gym = 0
+    @user.yoga.should == 0
+    @user.meditation.should == 0
+    @user.gym.should == 0
   end
 
   it 'rewards extra stars for doing extra yoga' do
@@ -36,6 +36,16 @@ describe User do
     @user.gym = 2
     @user.convert_activities_to_stars
     @user.stars.should == 7
+  end
+
+  it 'clears your activities even if you did not meet the minimum' do
+    @user.yoga = 0
+    @user.convert_activities_to_stars
+    @user.stars.should == 0
+
+    @user.yoga.should == 0
+    @user.meditation.should == 0
+    @user.gym.should == 0
   end
 
   def set_minimum

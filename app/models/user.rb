@@ -11,9 +11,10 @@ class User < ActiveRecord::Base
     if completed_minimum?
       minimum_reward
       extra_rewards
-      reset_activities
-      save
     end
+
+    reset_activities
+    save
   end
 
   private
