@@ -1,3 +1,20 @@
 Welcome to the HoneyPie Star Chart!!!
 <br/>
 You have <%= pluralize(@user.stars, 'star') %>.
+
+<%= form_tag('/enter_time', :method => "get") do %>
+  <%= label_tag(:user_yoga, "Yoga") %>
+  <%= text_field(:user, :yoga) %>
+  <br/>
+
+  <%= label_tag(:user_gym, "Gym") %>
+  <%= text_field(:user, :gym) %>
+  <br/>
+
+  <%= label_tag(:user_meditation, "Meditation") %>
+  <%= text_field(:user, :meditation) %>
+  <br/>
+
+  <%= submit_tag("Submit") %>
+<% end %>
+

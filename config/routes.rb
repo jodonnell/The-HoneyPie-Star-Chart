@@ -1,6 +1,7 @@
 TheHoneyPieStarChart::Application.routes.draw do
   root :to => 'honey_pie#index'
   devise_for :users
+  match 'enter_time' => 'honey_pie#enter_time'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
