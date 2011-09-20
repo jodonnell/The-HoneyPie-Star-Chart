@@ -10,4 +10,14 @@ class HoneyPieController < ApplicationController
     redirect_to root_path
   end
 
+  def buy
+    buy = params[:what]
+    if current_user.stars >= 20
+      current_user.stars -= 20
+      current_user.save
+    end
+    redirect_to root_path
+  end
+
+
 end

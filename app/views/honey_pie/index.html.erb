@@ -18,3 +18,7 @@ You have <%= pluralize(@user.stars, 'star') %>.
   <%= submit_tag("Submit") %>
 <% end %>
 
+<br/>
+<%= link_to "Buy Movie Ticket", buy_path(:what => :movie_ticket)%>
+
+

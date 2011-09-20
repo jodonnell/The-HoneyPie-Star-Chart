@@ -40,6 +40,12 @@ describe HoneyPieController do
     user.meditation.should == 1
   end
 
+  it 'will let you buy a prize' do
+    update_user_stars 20
+    click_on 'Buy Movie Ticket'
+    user.stars.should == 0
+  end
+
   def update_user_stars stars
     me = user
     me.stars = stars
