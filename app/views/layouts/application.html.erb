@@ -10,7 +10,11 @@
   </head>
   <body>
     <div id="content">
-      <div id="banner"><%= image_tag "images/banner.png" %></div>
+      <div id="banner">
+	<%= image_tag "images/mario-glowstar.png", :class => 'star-left' %>
+	<%= image_tag "images/banner.png", :class => 'banner' %>
+	<%= image_tag "images/mario-glowstar.png", :class => ['flip-horizontal', 'star-right'] %>
+      </div>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
       
