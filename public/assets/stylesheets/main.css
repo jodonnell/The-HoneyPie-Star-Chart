@@ -1,6 +1,6 @@
 #content {
     width: 1400px;
-    padding-top: 40px;
+    padding-top: 10px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -26,17 +26,16 @@
 }
 
 #banner {
-    margin-bottom: 50px;
-}
-.banner {
-
-
+    margin-bottom: 40px;
 }
 
-#main {
-    width: 400px;
-    margin-right: auto;
-    margin-left: auto;
+#activities {
+    margin-left: 270px;
+    margin-top: -25px;
+}
+
+#activities p {
+    margin: -4px;
 }
 
 #stars {
@@ -47,4 +46,19 @@
 
 #stars p {
     padding-left: 10px;
+}
+
+.up-arrow {
+    position: relative;
+    bottom: 60px;
+}
+
+.down-arrow {
+    position: relative;
+    right: 53px;
+}
+
+#gym {
+    position: relative;
+    top: -5px;
 }
