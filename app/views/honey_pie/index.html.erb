@@ -47,17 +47,13 @@ function yogaUp() {
     if (yogaNum < 9) {
         yogaNum++;
     }
-    changeYogaSrc();
+    changeSrc(yogaNum, '#yoga_num');
 }
 
 function yogaDown() {
     if (yogaNum > 0)
         yogaNum--;
-    changeYogaSrc();
-}
-
-function changeYogaSrc() {
-    $('#yoga_num')[0].src = '/assets/images/' + yogaNum + '.png';
+    changeSrc(yogaNum, '#yoga_num');
 }
 
 var meditationNum = <%= @user.meditation %>;
@@ -65,17 +61,13 @@ function meditationUp() {
     if (meditationNum < 9) {
         meditationNum++;
     }
-    changeMeditationSrc();
+    changeSrc(meditationNum, '#meditation_num');
 }
 
 function meditationDown() {
     if (meditationNum > 0)
         meditationNum--;
-    changeMeditationSrc();
-}
-
-function changeMeditationSrc() {
-    $('#meditation_num')[0].src = '/assets/images/' + meditationNum + '.png';
+    changeSrc(meditationNum, '#meditation_num');
 }
 
 var gymNum = <%= @user.gym %>;
@@ -83,17 +75,21 @@ function gymUp() {
     if (gymNum < 9) {
         gymNum++;
     }
-    changeGymSrc();
+    changeSrc(gymNum, '#gym_num');
 }
 
 function gymDown() {
     if (gymNum > 0)
         gymNum--;
-    changeGymSrc();
+    changeSrc(gymNum, '#gym_num');
 }
 
-function changeGymSrc() {
-    $('#gym_num')[0].src = '/assets/images/' + gymNum + '.png';
+function changeSrc(num, id) {
+    if (num == 1)
+        $(id).addClass('one');
+    else
+        $(id).removeClass('one');
+    $(id)[0].src = '/assets/images/' + num + '.png';
 }
 
 function formSubmit() {
@@ -101,5 +97,14 @@ function formSubmit() {
     $('#user_gym')[0].value = gymNum;
     $('#user_meditation')[0].value = meditationNum;
 }
+
+if (yogaNum == 1)
+    $('#yoga_num').addClass('one');
+
+if (gymNum == 1)
+    $('#gym_num').addClass('one');
+
+if (meditationNum == 1)
+    $('#meditation_num').addClass('one');
 
 </script>
