@@ -30,9 +30,9 @@ describe HoneyPieController do
   end
 
   it 'will let you enter time' do
-    fill_in 'Yoga', :with => '1'
-    fill_in 'Gym', :with => '1'
-    fill_in 'Meditation', :with => '1'
+    fill_in 'user_yoga', :with => '1'
+    fill_in 'user_gym', :with => '1'
+    fill_in 'user_meditation', :with => '1'
     click_on 'Submit'
 
     user.yoga.should == 1

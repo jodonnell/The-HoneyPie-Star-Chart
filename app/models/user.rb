@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :yoga, :gym, :meditation, :stars
 
+  def self.convert_activities_to_stars
+    all.each { |user| user.convert_activities_to_stars }
+  end
+
   def convert_activities_to_stars
     if completed_minimum?
       minimum_reward
