@@ -68,6 +68,26 @@
     left: 35px;
 }
 
+.inner-content {
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#rewards {
+    position: absolute;
+    width: 280px;
+    height: 800px;
+    left: -280px;
+    top: 0px;
+    z-index: 999;
+
+    background-color: black;
+    opacity: .85;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
 .notice {
     color: green;
     text-align: center;

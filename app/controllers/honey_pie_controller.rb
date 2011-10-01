@@ -12,11 +12,15 @@ class HoneyPieController < ApplicationController
 
   def buy
     buy = params[:what]
-    if current_user.stars >= 20
-      current_user.stars -= 20
+    response = {:success => 0}
+    if current_user.stars >= 16
+      current_user.stars -= 16
+      current_user.movie_tickets += 1
       current_user.save
+      response[:success] = 1
+      response[:stars] = 16
     end
-    redirect_to root_path
+    render :json => response.to_json
   end
 
 

@@ -1,9 +1,21 @@
+<script>
+$('#inner-content').removeClass('inner-content');
+</script>
+<div id="rewards">
+  <%= link_to image_tag("images/movie-tickets.png"), buy_path(:what => :movie_ticket), :onclick => 'buy_tickets(); return false;' %>
+</div>
+
   <div id="stars">
     <% @user.stars.times do %>
       <%= image_tag "images/rating-star.gif" %>
     <% end %>
     <br />
     <p>You have <%= pluralize(@user.stars, 'star') %>.</p>
+    <br />
+    <br />
+    <% @user.movie_tickets.times do %>
+    <%= image_tag("images/movie-tickets.png") %>
+    <% end %>
   </div>
 
 <div id="activities">
@@ -39,50 +51,52 @@
   <% end %>
 
   <br/>
-  <%= link_to "Buy Movie Ticket", buy_path(:what => :movie_ticket)%>
+  <%= link_to "Rewards", '#', :onclick => 'rewards(); return false;' %>
 
 <script>
 var yogaNum = <%= @user.yoga %>;
+var meditationNum = <%= @user.meditation %>;
+var gymNum = <%= @user.gym %>;
+
 function yogaUp() {
-    if (yogaNum < 9) {
-        yogaNum++;
-    }
-    changeSrc(yogaNum, '#yoga_num');
+    yogaNum = up(yogaNum, '#yoga_num');
 }
 
 function yogaDown() {
-    if (yogaNum > 0)
-        yogaNum--;
-    changeSrc(yogaNum, '#yoga_num');
+    yogaNum = down(yogaNum, '#yoga_num');
 }
 
-var meditationNum = <%= @user.meditation %>;
 function meditationUp() {
-    if (meditationNum < 9) {
-        meditationNum++;
-    }
-    changeSrc(meditationNum, '#meditation_num');
+    meditationNum = up(meditationNum, '#meditation_num');
 }
 
 function meditationDown() {
-    if (meditationNum > 0)
-        meditationNum--;
-    changeSrc(meditationNum, '#meditation_num');
+    meditationNum = down(meditationNum, '#meditation_num');
 }
 
-var gymNum = <%= @user.gym %>;
 function gymUp() {
-    if (gymNum < 9) {
-        gymNum++;
-    }
-    changeSrc(gymNum, '#gym_num');
+    gymNum = up(gymNum, '#gym_num');
 }
 
 function gymDown() {
-    if (gymNum > 0)
-        gymNum--;
-    changeSrc(gymNum, '#gym_num');
+    gymNum = down(gymNum, '#gym_num');
 }
+
+function up(num, id) {
+    if (num < 9) {
+        num++;
+    }
+    changeSrc(num, id);
+    return num;
+}
+
+function down(num, id) {
+    if (num > 0)
+        num--;
+    changeSrc(num, id);
+    return num;
+}
+
 
 function changeSrc(num, id) {
     if (num == 1)
@@ -90,6 +104,8 @@ function changeSrc(num, id) {
     else
         $(id).removeClass('one');
     $(id)[0].src = '/assets/images/' + num + '.png';
+
+    
 }
 
 function formSubmit() {
@@ -106,5 +122,23 @@ if (gymNum == 1)
 
 if (meditationNum == 1)
     $('#meditation_num').addClass('one');
+
+
+function rewards() {
+    $('#rewards').animate({
+	left: '+=280',
+    }, 1000, function() {
+	// Animation complete.
+    });
+}
+
+function buy_tickets() {
+    $.post('<%= buy_path %>', {what: 'movie_ticket'}, 
+	  function(data) {
+	      if (data.success == 0) {
+		  $('.alert').html('You do not have enough stars to buy this!')
+	      }
+	  });
+}
 
 </script>
