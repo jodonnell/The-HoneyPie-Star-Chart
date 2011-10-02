@@ -195,6 +195,10 @@ function rewards() {
 }
 
 function buy_prize(what) {
+    var r = confirm("HoneyPie, are you sure you want to buy this?");
+    if (r == false)
+	return false;
+
     $.post('<%= buy_path %>', {what: what}, 
 	  function(data) {
 	      if (data.success == 0) {
