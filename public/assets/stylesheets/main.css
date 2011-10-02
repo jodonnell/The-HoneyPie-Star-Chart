@@ -40,8 +40,8 @@
 
 #stars {
     float:right;
-    width: 200px;
-    margin-right: 250px;
+    width: 250px;
+    margin-right: 200px;
 }
 
 #stars p {
@@ -77,15 +77,18 @@
 #rewards {
     position: absolute;
     width: 280px;
-    height: 800px;
+    height: 500px;
     left: -280px;
-    top: 0px;
+    top: 220px;
     z-index: 999;
 
     background-color: black;
     opacity: .85;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
+    
+    color: white;
+    font-size: 30px;
 }
 
 .notice {
@@ -96,4 +99,19 @@
 .alert {
     color: red;
     text-align: center;
+}
+
+.stars-cost-image {
+    position: relative;
+    top: 10px;
+}
+
+.reward-image {
+    position: relative;
+    top: 15px;
+    left: 10px;
+}
+
+.reward {
+    padding-left: 15px;
 }

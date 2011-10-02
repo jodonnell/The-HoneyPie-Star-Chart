@@ -1,22 +1,25 @@
-<script>
+<script type="text/javascript">
 $('#inner-content').removeClass('inner-content');
 </script>
 <div id="rewards">
-  <%= link_to image_tag("images/movie-tickets.png"), buy_path(:what => :movie_ticket), :onclick => 'buy_tickets(); return false;' %>
+  <div class="reward">
+    16 x <span class="stars-cost-image"><%= image_tag("images/rating-star.png") %></span>
+    <span class="reward-image"><%= link_to image_tag("images/movie-tickets.png"), buy_path(:what => :movie_ticket), :onclick => 'buy_tickets(); return false;' %></span>
+  </div>
 </div>
 
-  <div id="stars">
-    <% @user.stars.times do %>
-      <%= image_tag "images/rating-star.gif" %>
-    <% end %>
-    <br />
-    <p>You have <%= pluralize(@user.stars, 'star') %>.</p>
-    <br />
-    <br />
-    <% @user.movie_tickets.times do %>
-    <%= image_tag("images/movie-tickets.png") %>
-    <% end %>
-  </div>
+<div id="stars">
+  <% @user.stars.times do %>
+  <%= image_tag "images/rating-star.png" %>
+  <% end %>
+  <br />
+  <p>You have <%= pluralize(@user.stars, 'star') %>.</p>
+  <br />
+  <br />
+  <% @user.movie_tickets.times do %>
+  <%= image_tag("images/movie-tickets.png") %>
+  <% end %>
+</div>
 
 <div id="activities">
 
@@ -52,8 +55,9 @@ $('#inner-content').removeClass('inner-content');
 
   <br/>
   <%= link_to "Rewards", '#', :onclick => 'rewards(); return false;' %>
+</div>
 
-<script>
+<script type="text/javascript">
 var yogaNum = <%= @user.yoga %>;
 var meditationNum = <%= @user.meditation %>;
 var gymNum = <%= @user.gym %>;
@@ -136,8 +140,12 @@ function buy_tickets() {
     $.post('<%= buy_path %>', {what: 'movie_ticket'}, 
 	  function(data) {
 	      if (data.success == 0) {
-		  $('.alert').html('You do not have enough stars to buy this!')
+		  $('.alert').html('You do not have enough stars to buy this!');
+		  return;
 	      }
+
+	      //  hide stars
+
 	  });
 }
 
