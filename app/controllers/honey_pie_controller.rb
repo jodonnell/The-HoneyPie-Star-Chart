@@ -47,17 +47,24 @@ class HoneyPieController < ApplicationController
         response[:stars] = 20
       end
     elsif buy == 'popcorn'
-      if current_user.stars >= 6
-        current_user.stars -= 6
+      if current_user.stars >= 4
+        current_user.stars -= 4
         current_user.popcorn += 1
         current_user.save
         response[:success] = 1
-        response[:stars] = 6
+        response[:stars] = 4
+      end
+    elsif buy == 'taxi'
+      if current_user.stars >= 10
+        current_user.stars -= 10
+        current_user.taxi += 1
+        current_user.save
+        response[:success] = 1
+        response[:stars] = 10
       end
     end
 
     render :json => response.to_json
   end
-
 
 end

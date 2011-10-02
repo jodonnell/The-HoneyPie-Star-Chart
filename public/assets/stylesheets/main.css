@@ -120,6 +120,8 @@
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
     
+    cursor: hand; 
+    cursor: pointer;
 }
 
 .notice {
