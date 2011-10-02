@@ -1,18 +1,21 @@
 <script type="text/javascript">
 $('#inner-content').removeClass('inner-content');
 </script>
-<div id="rewards">
-  <div class="reward">
-    4 x <span class="stars-cost-image"><%= image_tag("images/rating-star.png") %></span>
-    <span class="reward-image"><%= link_to image_tag("images/massage.png"), buy_path(:what => :massage), :onclick => 'buy_prize("massage"); return false;' %></span>
-  </div>
-  <div class="reward">
-    8 x <span class="stars-cost-image"><%= image_tag("images/rating-star.png") %></span>
-    <span class="reward-image"><%= link_to image_tag("images/sundae.png"), buy_path(:what => :sundae), :onclick => 'buy_prize("sundae"); return false;' %></span>
-  </div>
-  <div class="reward">
-    16 x <span class="stars-cost-image"><%= image_tag("images/rating-star.png") %></span>
-    <span class="reward-image"><%= link_to image_tag("images/tickets.png"), buy_path(:what => :tickets), :onclick => 'buy_prize("tickets"); return false;' %></span>
+<div id="rewards-section">
+  <div id="rewards-tab"></div>
+  <div id="rewards">
+    <div class="reward">
+      4 x <span class="stars-cost-image"><%= image_tag("images/rating-star.png") %></span>
+      <span class="reward-image"><%= link_to image_tag("images/massage.png"), buy_path(:what => :massage), :onclick => 'buy_prize("massage"); return false;' %></span>
+    </div>
+    <div class="reward">
+      8 x <span class="stars-cost-image"><%= image_tag("images/rating-star.png") %></span>
+      <span class="reward-image"><%= link_to image_tag("images/sundae.png"), buy_path(:what => :sundae), :onclick => 'buy_prize("sundae"); return false;' %></span>
+    </div>
+    <div class="reward">
+      16 x <span class="stars-cost-image"><%= image_tag("images/rating-star.png") %></span>
+      <span class="reward-image"><%= link_to image_tag("images/tickets.png"), buy_path(:what => :tickets), :onclick => 'buy_prize("tickets"); return false;' %></span>
+    </div>
   </div>
 </div>
 
@@ -51,7 +54,7 @@ $('#inner-content').removeClass('inner-content');
     <%= image_tag "images/yoga.png" %>
     <%= image_tag "images/#{@user.yoga}.png", :id => 'yoga_num' %>
     <%= image_tag "images/up-arrow.png", :onclick => 'yogaUp();', :class => 'up-arrow'  %>
-    <%= image_tag "images/down-arrow.png", :onclick => 'yogaDown();', :class => 'down-arrow' %>
+    <%= image_tag "images/up-arrow.png", :onclick => 'yogaDown();', :class => 'down-arrow flip-vertical' %>
     <%= text_field(:user, :yoga, :style => 'display: none;') %>
   </p>
 
@@ -59,7 +62,7 @@ $('#inner-content').removeClass('inner-content');
     <%= image_tag "images/gym.png" %>
     <%= image_tag "images/#{@user.gym}.png", :id => 'gym_num' %>
     <%= image_tag "images/up-arrow.png", :onclick => 'gymUp();', :class => 'up-arrow'  %>
-    <%= image_tag "images/down-arrow.png", :onclick => 'gymDown();', :class => 'down-arrow' %>
+    <%= image_tag "images/up-arrow.png", :onclick => 'gymDown();', :class => 'down-arrow flip-vertical' %>
     <%= text_field(:user, :gym, :style => 'display: none;') %>
   </p>
 
@@ -67,7 +70,7 @@ $('#inner-content').removeClass('inner-content');
     <%= image_tag "images/meditation.png" %>
     <%= image_tag "images/#{@user.meditation}.png", :id => 'meditation_num' %>
     <%= image_tag "images/up-arrow.png", :onclick => 'meditationUp();', :class => 'up-arrow'  %>
-    <%= image_tag "images/down-arrow.png", :onclick => 'meditationDown();', :class => 'down-arrow' %>
+    <%= image_tag "images/up-arrow.png", :onclick => 'meditationDown();', :class => 'down-arrow flip-vertical' %>
     <%= text_field(:user, :meditation, :style => 'display: none;') %>
   </p>
 
@@ -151,12 +154,20 @@ if (meditationNum == 1)
     $('#meditation_num').addClass('one');
 
 
+var out = false;
 function rewards() {
-    $('#rewards').animate({
-	left: '+=280',
-    }, 1000, function() {
-	// Animation complete.
+    if (out == false) {
+	config = {left: '+=230'};
+	out = true;
+    }
+    else {
+	config = {left: '-=230'};
+	out = false;
+    }
+    $('#rewards-section').animate(config, 1000, function() {
+
     });
+
 }
 
 function buy_prize(what) {
@@ -183,5 +194,9 @@ function buy_prize(what) {
 	      }
 	  });
 }
+
+$('#rewards-tab').click(function() {
+    rewards();
+});
 
 </script>

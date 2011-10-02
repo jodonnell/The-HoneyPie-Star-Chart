@@ -74,11 +74,11 @@
     margin-right: auto;
 }
 
-#rewards {
+#rewards-section {
     position: absolute;
-    width: 280px;
+    width: 230px;
     height: 500px;
-    left: -280px;
+    left: -230px;
     top: 220px;
     z-index: 999;
 
@@ -89,6 +89,20 @@
     
     color: white;
     font-size: 30px;
+}
+
+#rewards-tab {
+    position: absolute;
+    width: 40px;
+    height: 100px;
+    left: 230px;
+    top: 40px;
+
+    background-color: black;
+    opacity: .85;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    
 }
 
 .notice {
@@ -115,3 +129,12 @@
 .reward {
     padding-left: 15px;
 }
+
+.flip-vertical {
+    -moz-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: flipv; /*IE*/
+}
+
