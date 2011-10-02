@@ -7,6 +7,10 @@ $('#inner-content').removeClass('inner-content');
     <span class="reward-image"><%= link_to image_tag("images/massage.png"), buy_path(:what => :massage), :onclick => 'buy_prize("massage"); return false;' %></span>
   </div>
   <div class="reward">
+    8 x <span class="stars-cost-image"><%= image_tag("images/rating-star.png") %></span>
+    <span class="reward-image"><%= link_to image_tag("images/sundae.png"), buy_path(:what => :sundae), :onclick => 'buy_prize("sundae"); return false;' %></span>
+  </div>
+  <div class="reward">
     16 x <span class="stars-cost-image"><%= image_tag("images/rating-star.png") %></span>
     <span class="reward-image"><%= link_to image_tag("images/tickets.png"), buy_path(:what => :tickets), :onclick => 'buy_prize("tickets"); return false;' %></span>
   </div>
@@ -30,6 +34,11 @@ $('#inner-content').removeClass('inner-content');
     <div id="massage">
       <% @user.massages.times do %>
       <%= image_tag("images/massage.png") %>
+      <% end %>
+    </div>
+    <div id="sundae">
+      <% @user.sundaes.times do %>
+      <%= image_tag("images/sundae.png") %>
       <% end %>
     </div>
   </div>
