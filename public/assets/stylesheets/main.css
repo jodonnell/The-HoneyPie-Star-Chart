@@ -82,13 +82,30 @@
     top: 220px;
     z-index: 999;
 
-    background-color: black;
-    opacity: .85;
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
-    
+   
     color: white;
     font-size: 30px;
+}
+
+#rewards {
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+
+    height: 500px;
+    background-color: black;
+    opacity: .85;
+}
+
+.rewards-text {
+    padding-top: 5px;
+    padding-left: 20px;
+    font-size: 22px;
+    letter-spacing: 2px;
+    -webkit-transform: rotate(90deg);	
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
 }
 
 #rewards-tab {

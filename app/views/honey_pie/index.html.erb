@@ -2,7 +2,7 @@
 $('#inner-content').removeClass('inner-content');
 </script>
 <div id="rewards-section">
-  <div id="rewards-tab"></div>
+  <div id="rewards-tab"><div class="rewards-text">Prizes</div></div>
   <div id="rewards">
     <div class="reward">
       4 x <span class="stars-cost-image"><%= image_tag("images/rating-star.png") %></span>
@@ -78,9 +78,6 @@ $('#inner-content').removeClass('inner-content');
     <%= submit_tag("Submit", :onclick => 'formSubmit();') %>
   </p>
   <% end %>
-
-  <br/>
-  <%= link_to "Rewards", '#', :onclick => 'rewards(); return false;' %>
 </div>
 
 <script type="text/javascript">
