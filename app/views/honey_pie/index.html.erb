@@ -5,16 +5,20 @@ $('#inner-content').removeClass('inner-content');
   <div id="rewards-tab"><div class="rewards-text">Prizes</div></div>
   <div id="rewards">
     <div class="reward">
-      4 x <span class="stars-cost-image"><%= image_tag("images/rating-star.png") %></span>
+      &nbsp;&nbsp;4 x <span class="stars-cost-image"><%= image_tag("images/rating-star.png") %></span>
       <span class="reward-image"><%= link_to image_tag("images/massage.png"), buy_path(:what => :massage), :onclick => 'buy_prize("massage"); return false;' %></span>
     </div>
     <div class="reward">
-      8 x <span class="stars-cost-image"><%= image_tag("images/rating-star.png") %></span>
+      &nbsp;&nbsp;8 x <span class="stars-cost-image"><%= image_tag("images/rating-star.png") %></span>
       <span class="reward-image"><%= link_to image_tag("images/sundae.png"), buy_path(:what => :sundae), :onclick => 'buy_prize("sundae"); return false;' %></span>
     </div>
     <div class="reward">
       16 x <span class="stars-cost-image"><%= image_tag("images/rating-star.png") %></span>
       <span class="reward-image"><%= link_to image_tag("images/tickets.png"), buy_path(:what => :tickets), :onclick => 'buy_prize("tickets"); return false;' %></span>
+    </div>
+    <div class="reward">
+      20 x <span class="stars-cost-image"><%= image_tag("images/rating-star.png") %></span>
+      <span class="reward-image"><%= link_to image_tag("images/dinner.png"), buy_path(:what => :dinner), :onclick => 'buy_prize("dinner"); return false;' %></span>
     </div>
   </div>
 </div>
@@ -42,6 +46,11 @@ $('#inner-content').removeClass('inner-content');
     <div id="sundae">
       <% @user.sundaes.times do %>
       <%= image_tag("images/sundae.png") %>
+      <% end %>
+    </div>
+    <div id="dinner">
+      <% @user.dinner.times do %>
+      <%= image_tag("images/dinner.png") %>
       <% end %>
     </div>
   </div>
