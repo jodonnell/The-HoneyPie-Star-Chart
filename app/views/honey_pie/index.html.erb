@@ -3,22 +3,36 @@ $('#inner-content').removeClass('inner-content');
 </script>
 <div id="rewards">
   <div class="reward">
+    4 x <span class="stars-cost-image"><%= image_tag("images/rating-star.png") %></span>
+    <span class="reward-image"><%= link_to image_tag("images/massage.png"), buy_path(:what => :massage), :onclick => 'buy_prize("massage"); return false;' %></span>
+  </div>
+  <div class="reward">
     16 x <span class="stars-cost-image"><%= image_tag("images/rating-star.png") %></span>
-    <span class="reward-image"><%= link_to image_tag("images/movie-tickets.png"), buy_path(:what => :movie_ticket), :onclick => 'buy_tickets(); return false;' %></span>
+    <span class="reward-image"><%= link_to image_tag("images/tickets.png"), buy_path(:what => :tickets), :onclick => 'buy_prize("tickets"); return false;' %></span>
   </div>
 </div>
 
-<div id="stars">
-  <% @user.stars.times do %>
-  <%= image_tag "images/rating-star.png" %>
-  <% end %>
+<div id="right-panel">
+  <div id="stars">
+    <% @user.stars.times do %>
+    <%= image_tag "images/rating-star.png" %>
+    <% end %>
+    <br />
+    <p>You have <span id="num-stars"><%= pluralize(@user.stars, 'star') %></span>.</p>
+  </div>
   <br />
-  <p>You have <%= pluralize(@user.stars, 'star') %>.</p>
-  <br />
-  <br />
-  <% @user.movie_tickets.times do %>
-  <%= image_tag("images/movie-tickets.png") %>
-  <% end %>
+  <div id="prizes">
+    <div id="tickets">
+      <% @user.movie_tickets.times do %>
+      <%= image_tag("images/tickets.png") %>
+      <% end %>
+    </div>
+    <div id="massage">
+      <% @user.massages.times do %>
+      <%= image_tag("images/massage.png") %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 <div id="activities">
@@ -136,16 +150,28 @@ function rewards() {
     });
 }
 
-function buy_tickets() {
-    $.post('<%= buy_path %>', {what: 'movie_ticket'}, 
+function buy_prize(what) {
+    $.post('<%= buy_path %>', {what: what}, 
 	  function(data) {
 	      if (data.success == 0) {
 		  $('.alert').html('You do not have enough stars to buy this!');
 		  return;
 	      }
+	      else {
+		  var stars = $('#stars img');
+		  var fadeStars = stars.slice(stars.length - data.stars);
+		  fadeStars.fadeOut('slow', function() {
+		      fadeStars.remove();
+		  });
+		  var numStars = $('#num-stars').html().match(/[0-9]+/)[0];
+		  numStars -= data.stars;
+		  var html = numStars + ' star';
+		  if (numStars != 1)
+		      html += 's';
+		  $('#num-stars').html(html);
 
-	      //  hide stars
-
+		  $('#' + what).append($('<img src="/assets/images/' + what + '.png" alt="' + what + '">'));
+	      }
 	  });
 }
 
