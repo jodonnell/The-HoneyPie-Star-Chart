@@ -157,3 +157,8 @@
     filter: flipv; /*IE*/
 }
 
+.sale {
+    position: absolute;
+    top: 260px;
+    left: 170px;
+}
