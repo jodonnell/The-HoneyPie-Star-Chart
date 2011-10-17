@@ -55,8 +55,8 @@ class HoneyPieController < ApplicationController
         response[:stars] = 4
       end
     elsif buy == 'taxi'
-      if current_user.stars >= 10
-        current_user.stars -= 10
+      if current_user.stars >= 6
+        current_user.stars -= 6
         current_user.taxi += 1
         current_user.save
         response[:success] = 1
