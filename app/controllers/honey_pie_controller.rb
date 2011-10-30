@@ -61,7 +61,7 @@ class HoneyPieController < ApplicationController
         current_user.taxi += 1
         current_user.save
         response[:success] = 1
-        response[:stars] = 10
+        response[:stars] = 6
       end
     end
 
