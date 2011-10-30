@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :yoga, :gym, :meditation, :stars
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :yoga, :gym, :meditation, :stars, :writing
 
   def self.convert_activities_to_stars
     all.each { |user| user.convert_activities_to_stars }
@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
     self.stars += yoga * 2
     self.stars += gym * 3
     self.stars += meditation
+    self.stars += writing * 3
   end
 
 
@@ -44,5 +45,6 @@ class User < ActiveRecord::Base
     self.yoga = 0
     self.gym = 0
     self.meditation = 0
+    self.writing = 0
   end
 end

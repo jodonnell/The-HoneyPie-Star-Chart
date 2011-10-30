@@ -102,6 +102,14 @@ $('#inner-content').removeClass('inner-content');
   </p>
 
   <p>
+    <%= image_tag "images/writing.png" %>
+    <%= image_tag "images/#{@user.writing}.png", :id => 'writing_num' %>
+    <%= image_tag "images/up-arrow.png", :onclick => 'writingUp();', :class => 'up-arrow'  %>
+    <%= image_tag "images/up-arrow.png", :onclick => 'writingDown();', :class => 'down-arrow flip-vertical' %>
+    <%= text_field(:user, :writing, :style => 'display: none;') %>
+  </p>
+
+  <p>
     <%= submit_tag("Submit", :onclick => 'formSubmit();') %>
   </p>
   <% end %>
@@ -111,6 +119,7 @@ $('#inner-content').removeClass('inner-content');
 var yogaNum = <%= @user.yoga %>;
 var meditationNum = <%= @user.meditation %>;
 var gymNum = <%= @user.gym %>;
+var writingNum = <%= @user.writing %>;
 
 function yogaUp() {
     yogaNum = up(yogaNum, '#yoga_num');
@@ -118,6 +127,14 @@ function yogaUp() {
 
 function yogaDown() {
     yogaNum = down(yogaNum, '#yoga_num');
+}
+
+function writingUp() {
+    writingNum = up(writingNum, '#writing_num');
+}
+
+function writingDown() {
+    writingNum = down(writingNum, '#writing_num');
 }
 
 function meditationUp() {
@@ -163,6 +180,7 @@ function changeSrc(num, id) {
 }
 
 function formSubmit() {
+    $('#user_writing')[0].value = writingNum;
     $('#user_yoga')[0].value = yogaNum;
     $('#user_gym')[0].value = gymNum;
     $('#user_meditation')[0].value = meditationNum;
@@ -176,6 +194,9 @@ if (gymNum == 1)
 
 if (meditationNum == 1)
     $('#meditation_num').addClass('one');
+
+if (writingNum == 1)
+    $('#writing_num').addClass('one');
 
 
 var out = false;
