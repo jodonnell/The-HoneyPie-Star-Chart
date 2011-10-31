@@ -16,53 +16,17 @@ class HoneyPieController < ApplicationController
     response = {:success => 0}
 
     if buy == 'tickets'
-      if current_user.stars >= 16
-        current_user.stars -= 16
-        current_user.movie_tickets += 1
-        current_user.save
-        response[:success] = 1
-        response[:stars] = 16
-      end
+      response = current_user.buy_prize 16, 'movie_tickets'
     elsif buy == 'massage'
-      if current_user.stars >= 4
-        current_user.stars -= 4
-        current_user.massages += 1
-        current_user.save
-        response[:success] = 1
-        response[:stars] = 4
-      end
+      response = current_user.buy_prize 4, 'massages'
     elsif buy == 'sundae'
-      if current_user.stars >= 8
-        current_user.stars -= 8
-        current_user.sundaes += 1
-        current_user.save
-        response[:success] = 1
-        response[:stars] = 8
-      end
+      response = current_user.buy_prize 8, 'sundaes'
     elsif buy == 'dinner'
-      if current_user.stars >= 20
-        current_user.stars -= 20
-        current_user.dinner += 1
-        current_user.save
-        response[:success] = 1
-        response[:stars] = 20
-      end
+      response = current_user.buy_prize 20, 'dinner'
     elsif buy == 'popcorn'
-      if current_user.stars >= 4
-        current_user.stars -= 4
-        current_user.popcorn += 1
-        current_user.save
-        response[:success] = 1
-        response[:stars] = 4
-      end
+      response = current_user.buy_prize 4, 'popcorn'
     elsif buy == 'taxi'
-      if current_user.stars >= 6
-        current_user.stars -= 6
-        current_user.taxi += 1
-        current_user.save
-        response[:success] = 1
-        response[:stars] = 6
-      end
+      response = current_user.buy_prize 6, 'taxi'
     end
 
     render :json => response.to_json

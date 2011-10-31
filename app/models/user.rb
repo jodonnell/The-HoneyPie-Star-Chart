@@ -21,6 +21,21 @@ class User < ActiveRecord::Base
     save
   end
 
+  def buy_prize stars_cost, prize
+    response = {:success => 0}
+
+    if stars >= stars_cost
+      self.stars -= stars_cost
+      send(prize + '=', send(prize) + 1)
+      save
+
+      response[:success] = 1
+      response[:stars] = stars_cost
+    end
+    response
+
+  end
+  
   private
   def minimum_reward
     self.stars += 4
